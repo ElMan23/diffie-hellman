@@ -6,10 +6,10 @@ In case you use it to encrypt your communication and it gets broken or decrypted
 
 In a terminal launch the server:
 ```shell script
-python server.py
+python server.py <RANGE>
 ```
 In another terminal launch the client:
 ```shell script
-python client.py
+python client.py <RANGE>
 ```
 Both the processes should print the same shared secret.

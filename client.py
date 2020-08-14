@@ -1,13 +1,27 @@
+import sys
 import socket
+import random
 import dh
+import prime
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # Diffie-Hellman parameters
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-p = 59  # Prime
-g = 37  # Generator
-a = 17  # Secret
+# p = 59  # Prime
+# g = 37  # Generator
+# a = 17  # Secret
+
+
+# To take input from the user
+# a = int(input("Enter the range: "))
+# To use the arguments
+if (len(sys.argv) < 2):
+    print('Usage: python client.py <RANGE>')
+range = int(sys.argv[1])
+p = prime.random_prime(range)
+g = random.randint(1, range)
+a = random.randint(1, range)
 
 
 def main():

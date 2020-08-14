@@ -1,11 +1,21 @@
+import sys
 import socket
+import random
 import dh
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # Diffie-Hellman parameters
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-b = 24  # Secret
+# b = 24  # Secret
+
+# To take input from the user
+# b = int(input("Enter the range: "))
+# To use the arguments
+if (len(sys.argv) < 2):
+    print('Usage: python server.py <RANGE>')
+range = int(sys.argv[1])
+b = random.randint(1, range)
 
 
 def main():
