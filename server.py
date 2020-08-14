@@ -1,5 +1,5 @@
 import socket
-import converter
+import dh
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -29,23 +29,10 @@ def main():
         # c.send(converter.convert_int_to_bytes(37))
         # print(c.recv(1024))
 
-        diffie_hellman_server(b, c)
+        K = dh.diffie_hellman_server(b, c)
+        print('Shared secret:', K)
 
         c.close()
-
-
-def diffie_hellman_server(b, s):
-
-    p = converter.convert_bytes_to_int(s.recv(1024))
-    s.send(b'Received p')
-    g = converter.convert_bytes_to_int(s.recv(1024))
-    s.send(b'Received g')
-    B = (g ** b) % p
-    A = converter.convert_bytes_to_int(s.recv(1024))
-    s.send(converter.convert_int_to_bytes(B))
-    K = (A ** b) % p
-
-    print('Shared secret:', K)
 
 
 if __name__ == '__main__':

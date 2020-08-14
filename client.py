@@ -1,12 +1,12 @@
 import socket
-import converter
+import dh
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # Diffie-Hellman parameters
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 p = 59  # Prime
-g = 15  # Generator
+g = 37  # Generator
 a = 17  # Secret
 
 
@@ -22,23 +22,10 @@ def main():
     # print(converter.convert_bytes_to_int(s.recv(1024)))
     # s.send(b'Ciao')
 
-    diffie_hellman_client(p, g, a, s)
+    K = dh.diffie_hellman_client(p, g, a, s)
+    print('Shared secret:', K)
 
     s.close()
-
-
-def diffie_hellman_client(p, g, a, s):
-
-    s.send(converter.convert_int_to_bytes(p))
-    print(s.recv(1024))
-    s.send(converter.convert_int_to_bytes(g))
-    print(s.recv(1024))
-    A = (g ** a) % p
-    s.send(converter.convert_int_to_bytes(A))
-    B = converter.convert_bytes_to_int(s.recv(1024))
-    K = (B ** a) % p
-
-    print('Shared secret:', K)
 
 
 if __name__ == '__main__':
