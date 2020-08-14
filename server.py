@@ -39,7 +39,9 @@ def main():
         # c.send(converter.convert_int_to_bytes(37))
         # print(c.recv(1024))
 
-        K = dh.diffie_hellman_server(b, c)
+        K = 0
+        while K == 0:
+            K = dh.diffie_hellman_server(b, c)
         print('Shared secret:', K)
 
         c.close()
