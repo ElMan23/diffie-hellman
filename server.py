@@ -12,10 +12,19 @@ import dh
 # To take input from the user
 # b = int(input("Enter the range: "))
 # To use the arguments
-if (len(sys.argv) < 2):
-    print('Usage: python server.py <RANGE>')
-range = int(sys.argv[1])
-b = random.randint(1, range)
+if (len(sys.argv) < 3):
+    print('Usage: python server.py <START_RANGE> <END_RANGE>')
+    sys.exit(1)
+
+start_range = int(sys.argv[1])
+end_range = int(sys.argv[2])
+
+if start_range >= end_range:
+    print('Start range should be strictly less than end range')
+    sys.exit(1)
+
+
+b = random.randint(start_range, end_range)
 
 
 def main():

@@ -16,8 +16,8 @@ def is_prime(n):
             return False
 
 
-def random_prime(range):
-    n = random.randint(1, range)
+def random_prime(start_range, end_range):
+    n = random.randint(start_range, end_range)
     while not is_prime(n):
-        n = random.randint(0, range)
+        n = random.randint(start_range, end_range)
     return n
