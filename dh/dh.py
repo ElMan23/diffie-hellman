@@ -1,4 +1,4 @@
-import converter
+from utils import converter
 
 
 def diffie_hellman_server(b, s):

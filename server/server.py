@@ -1,7 +1,7 @@
 import sys
 import socket
 import random
-import dh
+import dh.dh as dh
 
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-

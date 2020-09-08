@@ -1,9 +1,8 @@
 import sys
 import socket
 import random
-import dh
-import prime
-
+import dh.dh as dh
+from utils import prime
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # Diffie-Hellman parameters

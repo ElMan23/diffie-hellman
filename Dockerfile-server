@@ -1,0 +1,9 @@
+FROM python:3.7-alpine
+WORKDIR /code
+ENV START_RANGE 100
+ENV END_RANGE 1000
+COPY dh .
+COPY server .
+CMD ["python", "server.py", "${START_RANGE}", "${END_RANGE}"]
+
+EXPOSE 80
